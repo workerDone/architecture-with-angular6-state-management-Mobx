@@ -1,0 +1,117 @@
+<div class="main-wrap container-fluid"
+  *mobxAutorun>
+
+  <div class="container">
+    <div class="row">
+      <div class="table-overflow">
+        <table class="top-table" *ngIf="isTournamentEnded">
+          <tr>
+            <th>№</th>
+            <th>Ethereum Amount</th>
+            <th>Country</th>
+            <th>ETH Address</th>
+          </tr>
+          <tr *ngFor="let item of achievementsIncentives">
+            <td>{{item.info.numberText}}</td>
+            <td [innerHtml]="item.info.ethAmount">{{item.info.ethAmount}}</td>
+
+            <td>
+              <img
+                [src]="'assets/img/flags/' + item?.teamAggregated?.teamInfo?.fileName + '.svg'"
+                [alt]="item?.teamAggregated?.teamInfo?.fullName + ' flag'">
+
+              <span class="country">
+                {{item?.teamAggregated?.teamInfo?.fullName}}
+
+                <span *ngIf="item?.isMy">(my)</span>
+              </span>
+            </td>
+
+            <td>{{item?.teamAggregated?.team?.ownerFormatted}}</td>
+          </tr>
+          <tr>
+            <td>Most Profitable Bidder</td>
+            <td>8% of Ethereum in Incentive Contract</td>
+            <td class="empty">
+              <div class="empty__img"></div>
+              <span>TBA</span>
+            </td>
+
+            <td class="empty"
+              *ngFor="let item of mostProfitableBiddersFormatted">
+                {{item}}
+            </td>
+
+            <td class="empty"
+              *ngIf="mostProfitableBiddersFormatted?.length === 0">
+                TBA
+            </td>
+          </tr>
+        </table>
+
+        <table *ngIf="!isTournamentEnded">
+          <tr>
+            <th>№</th>
+            <th>Ethereum Amount</th>
+            <th>Country</th>
+            <th>ETH Address</th>
+          </tr>
+          <tr>
+            <td>World Cup Winner</td>
+            <td>50% Of Ethereum in Incentive Contract <br>Plus Bit Tournament Gift Bundle</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>2nd Place</td>
+            <td>15% of Ethereum in Incentive Contract <br>Plus Bit Tournament Gift Bundle</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>3rd Place</td>
+            <td>7.5% of Ethereum in Incentive Contract <br>Plus Bit Tournament Gift Bundle</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Most Profitable Bidder</td>
+            <td>8% of Ethereum in Incentive Contract</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Winners Bracket (Team 1)</td>
+            <td>4% of Ethereum in Incentive Contract to <br>countries in winners group (excluding winner)</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Winners Bracket (Team 2)</td>
+            <td>4% of Ethereum in Incentive Contract to <br>countries in winners group (excluding winner)</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Winners Bracket (Team 3)</td>
+            <td>4% of Ethereum in Incentive Contract to <br>countries in winners group (excluding winner)</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Team with Most Goals Scored Against</td>
+            <td>2.5% of Ethereum in Incentive Contract</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+          <tr>
+            <td>Most Red Cards in Tournament</td>
+            <td>5% of Ethereum in Incentive Contract</td>
+            <td class="empty"><div class="empty__img"></div><span>TBA</span></td>
+            <td class="empty">TBA</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

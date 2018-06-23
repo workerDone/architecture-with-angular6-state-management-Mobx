@@ -1,0 +1,117 @@
+@import "src/assets/vars";
+
+.accordion-inner {
+  max-width: 630px;
+  width: 100%;
+  margin: auto;
+  //padding: 0 15px;
+}
+
+.accordion {
+  color: $base_mid;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 30px 0;
+  border-top: 2px solid $base_light;
+  transition: all 0.4s;
+  background-color: transparent;
+}
+
+.active, .accordion:hover {
+  color: $base;
+}
+
+.active {
+  padding-top: 50px;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #FF4B55;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+  color: #73AF00;
+}
+
+.active + .panel {
+  padding-bottom: 50px;
+}
+
+.panel {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $base_mid;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  &:last-child {
+    border-bottom: 2px solid $base_light;
+  }
+  p {
+    line-height: 1.5556;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+  span {
+    font-weight: 600;
+  }
+  a {
+    color: $base_mid
+  }
+  ul, ol {
+    padding-left: 40px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    li {
+      line-height: 1.5556;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    li {
+      position: relative;
+      &:before {
+        position: absolute;
+        top: 10px;
+        left: -20px;
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: $base_mid;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 768px) {
+
+  .accordion {
+    font-size: 1.8rem;
+    padding: 30px 0;
+  }
+
+  .panel {
+    font-size: 1.6rem;
+    ul,ol {
+      padding-left: 20px;
+    }
+  }
+}

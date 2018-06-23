@@ -1,0 +1,74 @@
+<div class="container">
+  <div id="switch__second-block">
+    <div class="row">
+      <form class="form"
+        [formGroup]="form"
+        (ngSubmit)='update()'
+        novalidate>
+
+        <div class="form__row">
+          <label class="form__label form__label_b" for="email">
+            Your Email:
+          </label>
+
+          <input class="form__input form__input_center"
+            id="email"
+            type="email"
+            placeholder="Enter Email"
+            required
+            autofocus
+            [class.field-error]="form.controls.email.invalid && form.controls.email.touched"
+            formControlName="email">
+
+            <div class="error">
+              <span class="help-text"
+                *ngIf="form.controls.email.invalid && form.controls.email.touched">
+
+                <span *ngIf="form.controls.email.errors.required">
+                  This field can't be empty.
+                </span>
+  
+                <span *ngIf="!form.controls.email.errors.required && form.controls.email.errors.emailFormat">
+                  The entered email address is invalid.
+                </span>
+              </span>
+            </div>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label form__label_b"
+            for="name">
+
+            Your Name:
+          </label>
+
+          <input class="form__input form__input_center"
+            id="name"
+            type="text"
+            placeholder="Enter Name"
+            [class.field-error]="form.controls.name.invalid && form.controls.name.touched"
+            formControlName="name">
+
+          <div class="error">
+            <span class="help-text"
+              *ngIf="form.controls.name.invalid && form.controls.name.touched">
+
+              <span *ngIf="form.controls.name.errors.required">
+                This field can't be empty
+              </span>
+
+              <span *ngIf="form.controls.name.errors.pattern">
+                Name should include only letters
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <button class="btn btn_big"
+          type="submit">
+          save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

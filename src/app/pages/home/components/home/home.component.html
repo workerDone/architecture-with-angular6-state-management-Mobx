@@ -1,0 +1,50 @@
+<div *mobxAutorun>
+  <div class="additional-inner">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row middle-xs">
+          <label class="switch">
+            <input
+              id="switch"
+              class="switch__input"
+              type="checkbox"
+              [checked]="isCheked"
+              (click)="moveLink($event)" >
+
+            <span class="slider switch__round" >
+              <span class="col-xs-6 slider__text  slider__text_first">
+                Market
+              </span>
+
+              <span class="col-xs-6 slider__text slider__text_last">
+                leaderboard
+              </span>
+            </span>
+          </label>
+
+          <div class="additional-btn additional-btn_left"
+            *ngIf="isShowSortBy">
+
+            <div class="dropdown">
+              sort by&nbsp;
+
+              <div class="additional-btn__link"
+                [class.dropdown-content]="currentTeamsSortBy !== teamsSortBy"
+                *ngFor="let teamsSortBy of teamsSortByList"
+                (click)="setTeamsSortBy(teamsSortBy)">
+
+                {{teamsSortBy?.name}}
+              </div>
+
+              <span class="additional-btn__link__triangle"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrap container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>

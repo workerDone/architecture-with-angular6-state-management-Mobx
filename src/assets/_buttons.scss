@@ -1,0 +1,41 @@
+.btn {
+	display: block;
+	width: 100%;
+	height: 35px;
+	background-color: $light;
+	border: 1px solid $base_light;
+	border-radius: 5px;
+	font-size: 1.6rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: $base;
+	margin: auto;
+	transition: all $transition-fast;
+	cursor: pointer;
+	&_big {
+		height: 45px;
+		border-width: 2px;
+		border-color: $base;
+	}
+	&:hover,
+	&:focus {
+		outline: none;
+		background-color: $base;
+    border-color: $base;
+		color: $light;
+	}
+
+	&:disabled {
+		border-color: $base_light !important;
+		color: $base_light !important;
+		cursor: not-allowed;
+		&:hover,
+		&:focus {
+			background-color: initial;
+			border-color: $base_light !important;
+			color: $base_light !important;
+
+		}
+	}
+
+}

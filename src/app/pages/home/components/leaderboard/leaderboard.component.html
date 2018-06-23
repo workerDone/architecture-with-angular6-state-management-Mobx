@@ -1,0 +1,48 @@
+<div class="container" *mobxAutorun>
+  <div id="switch__second-block">
+    <div class="row">
+      <div class="table-overflow">
+        <table>
+          <tr>
+            <th>№</th>
+            <th>Country</th>
+            <th>Date</th>
+            <th>Buyer</th>
+            <th>Seller</th>
+            <th>Price</th>
+          </tr>
+
+          <tr *ngFor="let transfer of topTransferAggregated; let i = index">
+              <td>{{i + 1}}</td>
+
+              <td>
+                <img
+                  [alt]="transfer?.teamAggregated?.teamInfo?.fileName + ' flag'"
+                  [src]="'assets/img/flags/' + transfer?.teamAggregated?.teamInfo?.fileName + '.svg'">
+
+                <span class="country">
+                  {{transfer?.teamAggregated?.teamInfo?.fullName}}
+                </span>
+              </td>
+
+              <td>
+                {{transfer?.transferInfo?.date | date}}
+              </td>
+
+              <td>
+                {{transfer?.transferInfo?.toName}}
+              </td>
+
+              <td>
+                {{transfer?.transferInfo?.fromName}}
+              </td>
+
+              <td>
+                {{transfer?.transferInfo?.formattedPrice}} ETH
+              </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/libs";
+@import "./assets/fonts";
+@import "./assets/reset";
+@import "./assets/vars";
+@import "./assets/buttons";
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "ProximaNova";
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: $base;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+//Stycky footer
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1 0 auto;
+  //margin-top: 40px;
+}
+
+footer {
+  flex: 0 0 auto;
+}
+//Stycky footer end
+
+.container {
+  position: relative;
+}
+
+.main-wrap {
+  margin-top: 40px;
+}
+
+.hr {
+  width: 100%;
+  max-width: 1064px;
+  height: 2px;
+  background-color: $base_light;
+  margin: auto;
+}
+
+@import "./assets/partial/header";
+@import "./assets/partial/footer";
+@import "./assets/partial/navigation";

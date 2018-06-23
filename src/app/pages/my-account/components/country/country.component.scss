@@ -1,0 +1,81 @@
+@import "src/assets/vars";
+@import 'src/assets/_empty-page-message';
+
+.purchase-block {
+  max-width: 254px;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  padding: 40px 0;
+  margin: 0 auto 15px;
+  box-shadow: 0 0 30px 0 $base-light;
+  transition: border .4s;
+  &:hover,
+  &:focus {
+    border: 1px solid $base_light;
+  }
+  &_modal {
+    box-shadow: none;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    &:hover,
+    &:focus {
+      border: 0 ;
+    }
+  }
+  &__img {
+    width: 60px;
+    height: 60px;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    &_big {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  &__country {
+    text-transform: capitalize;
+    margin-top: 15px;
+    &_big {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+  }
+  &__owner,
+  &__date {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $base_mid;
+    margin-top: 7px;
+    &_big {
+      font-size: 1.8rem;
+    }
+  }
+  &__price {
+    color: $primary;
+    text-transform: uppercase;
+    margin-top: 30px;
+    &_big {
+      font-size: 2rem;
+      margin-top: 40px;
+    }
+    &_min {
+      font-size: 1.4rem;
+      line-height: 1.214;
+      text-transform: none;
+      margin-top: 20px;
+    }
+  }
+  &__bought {
+    text-transform: uppercase;
+    line-height: 35px;
+    margin-top: 15px;
+  }
+  & button {
+    max-width: 154px;
+    margin-top: 15px;
+  }
+}

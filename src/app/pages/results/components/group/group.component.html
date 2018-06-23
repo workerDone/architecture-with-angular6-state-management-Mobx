@@ -1,0 +1,57 @@
+<div class="group">
+  <h3 class="group__headline">
+    {{groupName}}
+  </h3>
+
+  <ul class="group-list">
+    <li class="group-list__item"
+      *ngFor="let item of teamsGroup">
+
+      <div class="tooltip"
+        *ngIf="item">
+
+        <img class="group-list__img"
+          [src]="'assets/img/flags/' + item.teamInfo.fileName + '.svg'"
+          [alt]="item.teamInfo.fullName + ' flag'">
+
+        <ul class="tooltip-list tooltip-list_group">
+          <li class="tooltip-list__item">
+            Owner:
+
+            <span class="tooltip-list__item__text">
+              {{item.team.ownerText || 'No owner'}}
+            </span>
+          </li>
+
+          <li class="tooltip-list__item">
+            Bid Price:
+
+            <span>
+              {{item.team.formattedPrice}} ETH
+            </span>
+          </li>
+
+          <li class="tooltip-list__item">
+            Total Number of bids:
+
+            <span>
+              {{item.team.transferCount}}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <span class="country"
+        *ngIf="item">
+          {{item.teamInfo.fullName}}
+      </span>
+
+      <div *ngIf="!item">
+        <div class="empty__img"></div>
+          <span>
+            tba
+          </span>
+      </div>
+    </li>
+  </ul>
+</div>

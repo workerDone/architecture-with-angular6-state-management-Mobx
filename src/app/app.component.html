@@ -1,0 +1,246 @@
+<div class="wrapper" *mobxAutorun>
+  <div class="contract-closure">
+    <div class="container-fluid">
+      <div class="row center-xs">
+        <p class="contract-closure__text">Contract Closure:
+          <countdown-timer class="contract-closure__time" [end]="preICOCountdown"></countdown-timer>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <a routerLink="/home/market">
+      <img class="logo" src="assets/img/logo.png" alt="BitTournament">
+    </a>
+
+    <nav class="container-fluid">
+      <ul class="row between-xs center-sm nav-list">
+        <li class="nav-list__item">
+          <a class="nav-list__link" routerLink="/home/market">Home</a>
+        </li>
+        <li class="nav-list__item">
+          <a class="nav-list__link" routerLink="/how-to-play">How to Play</a>
+        </li>
+        <li class="nav-list__item">
+          <a class="nav-list__link" routerLink="/achievements-incentives">Achievements & Incentives</a>
+        </li>
+        <li class="nav-list__item">
+          <a class="nav-list__link" routerLink="/results">Results</a>
+        </li>
+        <!--<li class="nav-list__item">-->
+          <!--<a class="nav-list__link" routerLink="/terms-of-service">Terms of Service</a>-->
+        <!--</li>-->
+        <li class="nav-list__item">
+          <a class="nav-list__link" routerLink="/account/country">My Account</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hr"></div>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <!--<footer>-->
+    <!--footer-->
+  <!--</footer>-->
+
+  <div>
+    <div *ngIf="signIn" id="sign-in" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span class="close" (click)="moveSignIn()">×</span>
+            <h2 class="modal__headline">Sign In</h2>
+            <p class="modal__title">Enter your name and email; Agree to Bit Tournament Terms of Service by signing a
+              dummy transaction with MetaMask browser
+              plugin (desktop) or Cipher browser (mobile).</p>
+
+            <form class="form" [formGroup]="form" (ngSubmit)='sign()' novalidate>
+              <div class="row form__row between-sm middle-sm">
+                <label class="form__label" for="wallet">Wallet:</label>
+                <input class="form__input" id="wallet" type="text" [value]="wallet" disabled>
+              </div>
+
+              <div class="row form__row between-sm middle-sm">
+                <label class="form__label" for="email">Email:</label>
+
+                <input class="form__input"
+                       id="email"
+                       type="email"
+                       placeholder="Enter Email"
+                       [class.field-error]="form.controls.email.invalid && form.controls.email.touched"
+                       formControlName="email"
+                       autofocus>
+
+                <div class="error">
+										<span class="help-text" *ngIf="form.controls.email.invalid && form.controls.email.touched">
+											<span *ngIf="form.controls.email.errors.required">
+												This field can't be empty.
+											</span>
+
+											<span *ngIf="!form.controls.email.errors.required && form.controls.email.errors.emailFormat">
+												The entered email address is invalid.
+											</span>
+										</span>
+                </div>
+              </div>
+
+              <div class="row form__row between-sm middle-sm">
+                <label class="form__label" for="name">Name:</label>
+
+                <input class="form__input"
+                       id="name"
+                       type="text"
+                       placeholder="Enter Name"
+                       [class.field-error]="form.controls.name.invalid && form.controls.name.touched"
+                       formControlName="name">
+
+                <div class="error">
+									<span class="help-text" *ngIf="form.controls.name.invalid && form.controls.name.touched">
+										<span *ngIf="form.controls.name.errors.required">
+											This field can't be empty
+										</span>
+
+										<span *ngIf="form.controls.name.errors.pattern">
+											Last Name should include only letters
+										</span>
+									</span>
+                </div>
+              </div>
+              <button type="submit" class="btn btn_big">sign in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="metaMask" id="metamask-modal" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span class="close" (click)="moveMetaMask()">×</span>
+            <h2 class="modal__headline">Your MetaMask is locked.</h2>
+            <p class="modal__title">Simply open MetaMask and enter your password to unlock it.</p>
+          </div>
+          <div class="modal-hr"></div>
+          <div class="modal-body">
+            <h2 class="modal__headline">Using MetaMask or Cipher for transactions</h2>
+            <p class="modal__title">MetaMask browser plugin (desktop) or Cipher browser (mobile) act as a bridge to
+              Ethereum blockchain network and include
+              a secure identity vault, providing a user interface to manage your identities on different sites and sign
+              blockchain
+              transactions.</p>
+            <img class="modal__img" src="assets/img/metamask.png" alt="">
+            <p class="modal__title">Occasionally Bit Tournament page displays a lock screen. This happens because
+              MetaMask locks your account after a certain
+              period of time automatically. To unlock simply click on the MetaMask extension and type in your
+              password.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="afterBuy" id="verificatio-modal" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="modal__title">Thank you very much, purchase completed!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="afterSaveUserSuccess" id="verificatio-modal" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="modal__title">Your data has been saved!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="afterSaveUserError" id="verificatio-modal" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="modal__error">WARNING! Your data has not been saved!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isBuy" id="purchase-modal" class="modal center-sm middle-sm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span class="close" (click)="moveBuy()">×</span>
+            <div class="purchase-block">
+              <img class="purchase-block__img"
+                   [alt]="selectedTeam?.teamInfo?.fileName + ' flag'"
+                   [src]="'assets/img/flags/' + selectedTeam?.teamInfo?.fileName + '.svg'">
+
+              <h2 class="purchase-block__country">
+                {{selectedTeam?.teamInfo?.fillName}}
+              </h2>
+
+              <p class="purchase-block__owner">
+								<span *ngIf="selectedTeam?.team?.ownerText">
+									Owner: {{selectedTeam?.team?.ownerText}}
+								</span>
+
+                <span *ngIf="!selectedTeam?.team?.ownerText">
+									No owner
+								</span>
+              </p>
+
+              <p class="purchase-block__price">
+                {{selectedTeam?.team?.formattedPrice}} ETH
+              </p>
+
+              <button (click)="buy(selectedTeam.team.teamId)" class="btn btn_big">buy</button>
+            </div>
+          </div>
+          <div class="modal-hr"></div>
+          <div class="modal-body">
+            <table *ngIf="isHide">
+              <tr *ngFor="let transfer of firstThreetransfersForCurrentTeam">
+                <td>
+                  {{transfer.date | date}}
+                </td>
+
+                <td>
+                  {{transfer.toName}}
+                </td>
+
+                <td>
+                  {{transfer.formattedPrice}} ETH
+                </td>
+              </tr>
+            </table>
+            <table *ngIf="!isHide">
+              <tr *ngFor="let transfer of transfersForCurrentTeam">
+                <td>
+                  {{transfer.date | date}}
+                </td>
+
+                <td>
+                  {{transfer.toName}}
+                </td>
+
+                <td>
+                  {{transfer.formattedPrice}} ETH
+                </td>
+              </tr>
+            </table>
+            <a class="modal__more-btn" *ngIf="checkTransferLength"  (click)="showContent()">more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

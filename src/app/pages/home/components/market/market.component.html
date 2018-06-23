@@ -1,0 +1,68 @@
+<div *mobxAutorun>
+  <div class="container">
+    <div id="switch__first-block">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-lg-3"
+          *ngFor="let item of teamsAggregated; let i = index">
+
+          <div class="purchase-block">
+            <div class="tooltip">
+              <img class="purchase-block__img"
+                [alt]="item?.teamInfo?.fileName + ' flag'"
+                [src]="'assets/img/flags/' + item?.teamInfo?.fileName + '.svg'">
+
+              <ul class="tooltip-list">
+                <li class="tooltip-list__item">
+                  Previous Place:
+                  <span>
+                    {{item?.teamInfo?.previousPlace}}
+                  </span>
+                </li>
+
+                <li class="tooltip-list__item">
+                  World Cup appearances:
+                  <span>
+                    {{item?.teamInfo?.appearances}}
+                  </span>
+                </li>
+
+                <li class="tooltip-list__item">
+                  FIFA World Rating:
+                  <span>
+                    {{item?.teamInfo?.rating}}
+                  </span>
+                </li>
+              </ul>
+  
+              <h2 class="purchase-block__country">
+                {{item?.teamInfo?.fullName}}
+              </h2>
+
+              <p class="purchase-block__owner">
+                <span *ngIf="item?.team?.ownerText">
+                  Owner: {{item?.team?.ownerText}}
+                </span>
+
+                <span *ngIf="!item?.team?.ownerText">
+                  No owner
+                </span>
+              </p>
+
+              <p class="purchase-block__price">
+                {{item?.team?.formattedPrice}} ETH
+              </p>
+
+              <button class="btn modal-button"
+                (click)="buy(item)"
+                data-modal="#metamask-modal">
+
+                buy
+              </button>
+              <!--button class="btn modal-button" (click)="buy(i)" data-modal="#sign-in">buy</button-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container" *mobxAutorun>
+  <div id="switch__first-block"
+    *ngIf="userTeamsAggregated.length > 0">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-lg-3"
+        *ngFor="let userTeam of userTeamsAggregated">
+
+        <div class="purchase-block">
+          <img class="purchase-block__img"
+            [alt]="userTeam?.teamInfo?.fileName + ' flag'"
+            [src]="'assets/img/flags/' + userTeam?.teamInfo?.fileName + '.svg'">
+
+          <h2 class="purchase-block__country">
+            {{userTeam?.teamInfo?.fullName}}
+          </h2>
+
+          <p class="purchase-block__date">
+            {{userTeam?.userTeam?.transferDate | date}}
+          </p>
+
+          <p class="purchase-block__price purchase-block__price_min">Purchased for
+            <br> {{userTeam?.userTeam?.formattedTransferPrice}} ETH
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-page-message"
+    *ngIf="userTeamsAggregated.length == 0">
+
+    <div class="row">
+      You don't have a country :(
+    </div>
+  </div>
+</div>

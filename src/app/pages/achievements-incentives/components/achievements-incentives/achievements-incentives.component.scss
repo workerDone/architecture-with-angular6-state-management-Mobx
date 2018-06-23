@@ -1,0 +1,95 @@
+@import "src/assets/vars";
+
+.table-overflow {
+  width: 100%;
+  overflow-x: scroll;
+
+}
+.top-table{
+  tr{
+    &:last-of-type{
+      td{
+        &:nth-of-type(3){
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+table {
+  min-width: 1000px;
+  width: 100%;
+  text-align: left;
+  padding: 30px 0;
+  tr {
+    transition: all $transition-fast;
+    &:not(:first-child) {
+      cursor: pointer;
+      &:hover {
+        border-radius: 5px;
+        box-shadow: 0 0 30px 0 $base-light;
+      }
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $base_light;
+    }
+  }
+  th,td {
+    line-height: 1.25;
+    padding: 20px 0;
+    &:first-child {
+      padding-left: 30px;
+    }
+    &:last-child {
+      padding-right: 30px;
+    }
+  }
+  th {
+    color: $base_mid;
+    padding-top: 0;
+  }
+  td {
+    height: 80px;
+    position: relative;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+  img {
+    background-color: $base_light;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    -webkit-clip-path: circle(48% at 50% 50%);
+    clip-path: circle(48% at 50% 50%);
+    & + span {
+      display: block;
+      padding-left: 30px;
+      & span {
+        color: $base_mid;
+      }
+    }
+  }
+}
+
+.empty {
+  color: #1F497D;
+  &__img {
+    background-color: $base_light;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    -webkit-clip-path: circle(48% at 50% 50%);
+    clip-path: circle(48% at 50% 50%);
+    & + span {
+      display: block;
+      padding-left: 30px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.country {
+  text-transform: capitalize;
+}

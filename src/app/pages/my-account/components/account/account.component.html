@@ -1,0 +1,46 @@
+<div *mobxAutorun>
+  <div *ngIf="isLogged && !isLoading">
+    <div class="additional-inner">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row middle-xs">
+            <label class="switch">
+              <input id="switch" class="switch__input" type="checkbox"
+                (click)="moveLink($event)"
+                [checked]="isCheked">
+
+              <span class="slider switch__round">
+                <span class="col-xs-6 slider__text slider__text_first"> my country</span>
+                <span class="col-xs-6 slider__text slider__text_last">settings</span>
+              </span>
+            </label>
+
+            <div class="additional-btn additional-btn_right col-xs-12">
+              <a class="additional-btn__link" (click)="logOut()" >log out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-wrap container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="main-wrap container-fluid"
+    *ngIf="!isLogged">
+
+    <div class="empty-page-message">
+      <div class="row">
+        You are not logged in
+      </div>
+    </div>
+
+    <button class="btn btn_login"
+      type="submit"
+      (click)="init()">
+        Login
+    </button>
+  </div>
+</div>
